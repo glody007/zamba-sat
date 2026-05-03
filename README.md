@@ -100,6 +100,22 @@ colour shift, tile boundaries, swamp flooding) are doing most of the work.
 
 ## Status
 
+### Dataset
+
+Labeled v0 is published at:
+
+**https://huggingface.co/datasets/glody007/zamba-sat-congo-deforestation**
+
+46 labeled samples (27 train / 19 test) — 1 `expansion`, 10 `stable`, 35
+`cloud_artifact`. Each row carries the four frames as `Image()` columns plus
+metadata, the full annotation JSON, and the chain-of-thought reasoning. More
+data will be added as we expand frontier coverage.
+
+```python
+from datasets import load_dataset
+ds = load_dataset("glody007/zamba-sat-congo-deforestation")
+```
+
 ### Done
 
 - [x] SimSat client with 5xx retry / 4xx → `ImageUnavailable` and structured
