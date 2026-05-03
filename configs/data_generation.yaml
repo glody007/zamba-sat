@@ -1,0 +1,15 @@
+# Default parameters for scripts/generate_samples.py. CLI flags override these.
+
+start_date: "2025-06-01"
+end_date: "2026-04-01"
+
+n_temporal_samples: 8        # number of distinct t0 dates per spatial tile
+n_spatial_tiles: 4           # 4 → 2x2 grid, 9 → 3x3, 1 → just the center
+size_km: 10.0                # tile width passed to SimSat
+
+t1_offset_days: 30           # t1 = t0 - this many days
+window_seconds: 864000       # SimSat search window = 10 days
+
+max_cloud_cover_pct: 60.0    # skip frame above this; retries up to 3 shifted dates
+test_ratio: 0.2              # last 20% of date window goes to test split
+concurrency: 3               # parallel SimSat fetches

@@ -1,0 +1,60 @@
+# Congo Basin monitored locations. Coordinates are approximate centers; the
+# spatial grid in temporal_sampler.spatial_grid expands around each center.
+#
+# Add more by appending entries; downstream code reads this file via
+# zamba_sat.locations.load_locations().
+
+locations:
+  - id: salonga_north_drc
+    name: "Salonga National Park (North), DRC"
+    lat: -1.85
+    lon: 20.50
+    notes: "Largest tropical rainforest national park in Africa. Logging-road encroachment hotspot."
+
+  - id: virunga_drc
+    name: "Virunga National Park, DRC"
+    lat: -0.50
+    lon: 29.50
+    notes: "Eastern DRC, Albertine Rift. High agricultural and conflict-zone pressure on park boundaries."
+
+  - id: sangha_trinational
+    name: "Sangha Trinational, Congo / CAR / Cameroon border"
+    lat: 2.20
+    lon: 16.20
+    notes: "Tri-national protected complex. Selective logging concessions on park edges."
+
+  - id: mai_ndombe_drc
+    name: "Mai-Ndombe REDD+ project area, DRC"
+    lat: -2.00
+    lon: 18.30
+    notes: "Active REDD+ monitoring area. Mixed swamp/dry forest — beware seasonal flooding."
+
+  - id: lope_gabon
+    name: "Lopé National Park, Gabon"
+    lat: -0.50
+    lon: 11.50
+    notes: "Forest-savanna mosaic. Used as a contrast case to dense rainforest sites."
+
+  - id: yangambi_drc
+    name: "Yangambi research forest frontier, DRC"
+    lat: 0.79
+    lon: 24.50
+    notes: "Historical research station with surrounding agricultural pressure: roads, settlements, smallholder clearings. Off-park; expected to surface positive deforestation labels."
+
+  - id: kisangani_drc
+    name: "Kisangani periphery, DRC"
+    lat: 0.51
+    lon: 25.20
+    notes: "Major DRC city at the Congo-Lualaba bend. Smallholder agriculture and logging-road frontier on the city outskirts. Off-park."
+
+  - id: mbandaka_drc
+    name: "Mbandaka periphery, DRC"
+    lat: 0.10
+    lon: 18.30
+    notes: "Equatorial provincial capital on the Congo River. Riverbank smallholder agriculture and ongoing peripheral expansion. Off-park."
+
+  - id: bumba_drc
+    name: "Bumba road corridor, DRC"
+    lat: 2.18
+    lon: 22.60
+    notes: "Northern DRC town on the RN6 corridor. Road-driven agricultural expansion along trunk-road frontages. Off-park."
