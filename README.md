@@ -106,10 +106,20 @@ Labeled v0 is published at:
 
 **https://huggingface.co/datasets/glody007/zamba-sat-congo-deforestation**
 
-46 labeled samples (27 train / 19 test) — 1 `expansion`, 10 `stable`, 35
-`cloud_artifact`. Each row carries the four frames as `Image()` columns plus
-metadata, the full annotation JSON, and the chain-of-thought reasoning. More
-data will be added as we expand frontier coverage.
+**72 labeled samples**, all on a single 90-day temporal window
+(`t1 → t0 = 90 days`). Distribution: **21 expansion / 9 stable / 42
+cloud_artifact**. Sites: Yangambi (DRC, smallholder agricultural mosaic),
+Kindu (Maniema, GFW-cited 2024 top-3 deforestation province), Lusambo
+(Sankuru, GFW-cited 2024 top-2). Each row carries the four frames as
+`Image()` columns plus metadata, the full annotation JSON, and the
+chain-of-thought reasoning.
+
+The dataset is uniform-window-only by design: 30-day samples produced
+mostly cloud / stable labels because individual clearings are too small
+to register at 30-day cadence on 10 km tiles. The 90-day window catches
+accumulated dry-season change at all three sites. Earlier 30-day
+exploration runs are kept locally under `data/runs/` but are not part of
+the published dataset.
 
 ```python
 from datasets import load_dataset

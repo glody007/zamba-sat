@@ -58,3 +58,39 @@ locations:
     lat: 2.18
     lon: 22.60
     notes: "Northern DRC town on the RN6 corridor. Road-driven agricultural expansion along trunk-road frontages. Off-park."
+
+  - id: mbuji_mayi_drc
+    name: "Mbuji-Mayi mining + charcoal frontier, DRC"
+    lat: -6.18
+    lon: 23.62
+    notes: "Kasaï-Oriental capital. Industrial diamond mining plus large-scale charcoal/firewood deforestation driven by chronic power outages. Off-park."
+
+  - id: pokola_roc
+    name: "Pokola CIB logging concession, RoC"
+    lat: 1.42
+    lon: 16.33
+    notes: "Largest CIB timber concession in northern Republic of Congo (Sangha department). Active selective-logging frontier with associated road network. Off-park."
+
+  - id: ingende_drc
+    name: "Ingende / Boteka palm-oil frontier, DRC"
+    lat: -0.31
+    lon: 18.97
+    notes: "Ingende territory, Équateur. PHC palm-oil plantation (Boteka) recently expanded ~2,500 ha (2023-2024); buffer overlaps primary forest. Off-park."
+
+  - id: beni_drc
+    name: "Beni territory, Nord-Kivu, DRC"
+    lat: 0.49
+    lon: 29.47
+    notes: "GFW-cited deforestation hotspot. Agricultural expansion in conflict zone, ~70k ha/yr forest loss. Off-park (east of Virunga)."
+
+  - id: kindu_drc
+    name: "Kindu, Maniema, DRC"
+    lat: -2.95
+    lon: 25.92
+    notes: "Maniema province capital. 2024 top-3 province for DRC primary forest loss (~1.39M ha). Urban-driven pressure surrounded by primary forest."
+
+  - id: lusambo_drc
+    name: "Lusambo, Sankuru, DRC"
+    lat: -4.97
+    lon: 23.44
+    notes: "Sankuru province capital. 2024 top-2 province for DRC primary forest loss (~1.4M ha). Forest-savanna transition zone."
