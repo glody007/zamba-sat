@@ -1,0 +1,14 @@
+{
+  "deforestation_detected": false,
+  "change_pattern": "cloud_artifact",
+  "trajectory_confidence": "low",
+  "severity": "none",
+  "clearing_type": "none",
+  "area_bucket_t1": "none",
+  "area_bucket_t0": "none",
+  "active_operation": false,
+  "active_machinery_visible": false,
+  "smoke_or_fire_visible": false,
+  "recent_road_construction": false,
+  "frame_quality": ["good", "cloudy"]
+}

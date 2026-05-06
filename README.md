@@ -79,10 +79,45 @@ signal. Roughly half of Congo Basin acquisitions look like this even in the
 dry season.
 
 - A larger oracle VLM (Claude `claude-opus-4-7`) reads the four frames and
-  emits an XML chain-of-thought (`<frame_descriptions>`, `<change_analysis>`,
-  `<final_pattern>`, `<json>`). The JSON block is validated against a
-  Pydantic schema covering `change_pattern`, `severity`, `clearing_type`,
-  area buckets, and `frame_quality` flags.
+  emits an **XML chain-of-thought** — reasoning split into named sections
+  wrapped in tags, so each part is parseable and auditable rather than
+  buried in prose:
+
+  ```xml
+  <frame_descriptions>
+  Frame t-1: ...one sentence describing land cover...
+  Frame t-0: ...same...
+  </frame_descriptions>
+
+  <change_analysis>
+  ...did anything change? what? where in the frame?...
+  </change_analysis>
+
+  <final_pattern>
+  Pattern: stable | clearing | expansion | regrowth | cloud_artifact
+  Reasoning: ...one sentence...
+  </final_pattern>
+
+  <json>
+  { "deforestation_detected": false, "change_pattern": "stable", ... }
+  </json>
+  ```
+
+  Why this format over plain JSON:
+    - **Forces grounding before classification.** The model must describe
+      each frame and analyse the change *before* picking a label, which
+      stops small VLMs from jumping to a guess.
+    - **Per-section debuggability.** When a label looks wrong, the
+      `<frame_descriptions>` and `<change_analysis>` sections survive in
+      `annotation_reasoning.txt` so we can tell whether the model misread
+      the imagery or picked the wrong category.
+    - **Strict parser = clean dataset.** `src/zamba_sat/schema.py::parse_response`
+      extracts each tag, validates the `<json>` block against a Pydantic
+      schema (`change_pattern`, `severity`, `clearing_type`, area buckets,
+      `frame_quality`), and rejects responses that don't conform.
+
+  The tradeoff: a base un-fine-tuned 450M VLM can't follow this format
+  reliably. The whole point of fine-tuning is to teach it to.
 
 - Sampling is deliberate, not random: an `NxN` spatial grid centred on each
   location, bin-centre temporal placement across the configured window, and
@@ -232,6 +267,61 @@ uv run scripts/check_samples.py dry_season
 Reports per-run sample counts, completeness, label coverage, and the
 distribution of `change_pattern` values.
 
+## Evaluation
+
+`scripts/evaluate.py` runs a model against the labeled test split and
+scores its predictions field-by-field against the ground-truth JSON. Three
+backends, same scoring path:
+
+| Backend | What it is | When to use |
+|---|---|---|
+| `anthropic` | Calls `claude-opus-4-7` via the Anthropic API | Oracle re-labeling baseline (label-noise upper bound). Costs money. |
+| `local` | POSTs to an OpenAI-compatible `/v1/chat/completions` server (e.g. llama.cpp serving the fine-tuned `LFM2.5-VL-450M` GGUF) | Deployment target — measures how well the small on-board model matches the oracle. |
+| `claude_code` | Reads pre-written predictions from `--predictions-dir` | Lets Claude in-conversation produce predictions for free, then scores them. |
+
+What gets scored (13 fields per sample):
+
+```
+valid_json, deforestation_detected, change_pattern,
+trajectory_confidence, severity, clearing_type,
+area_bucket_t1, area_bucket_t0,
+active_operation, active_machinery_visible,
+smoke_or_fire_visible, recent_road_construction,
+frame_quality   # set-equality; others are exact match
+```
+
+Each run writes `evals/<timestamp>/`:
+
+```
+report.md      # per-field accuracy table + per-sample change_pattern column
+results.json   # per-sample predictions and field-match flags
+meta.json      # backend, model, runs, split, n_samples, timestamp
+```
+
+### Examples
+
+```bash
+# Oracle baseline — Anthropic re-labels its own annotations
+ANTHROPIC_API_KEY=sk-... uv run scripts/evaluate.py \
+    --backend anthropic \
+    --runs wide_window wide_window_v2 --split test
+
+# Fine-tuned LFM behind a llama.cpp server
+uv run scripts/evaluate.py --backend local \
+    --server-url http://localhost:8000 \
+    --model lfm2-vl-450m-deforestation-q8 \
+    --runs wide_window wide_window_v2 --split test
+
+# Score predictions Claude wrote in this conversation
+uv run scripts/evaluate.py --backend claude_code \
+    --predictions-dir evals/2026-05-05_claude/predictions \
+    --runs wide_window wide_window_v2 --split test
+```
+
+The published 90-day dataset has **36 test samples** across Yangambi,
+Kindu, and Lusambo. Anthropic-vs-Anthropic agreement gives you the ceiling
+the fine-tuned LFM should aspire to.
+
 ## Tests
 
 ```bash
@@ -257,6 +347,8 @@ zamba-sat/
 │   ├── generate_samples.py      # main entry — fetch + (optional) label
 │   ├── label_pending.py         # list samples missing annotation.json
 │   ├── check_samples.py         # run validation
+│   ├── evaluate.py              # score predictions vs ground truth
+│   ├── upload_to_hf.py          # push labeled runs to HuggingFace
 │   └── prepare_finetune.py      # leap-finetune JSONL stub
 └── tests/
     └── test_schema.py

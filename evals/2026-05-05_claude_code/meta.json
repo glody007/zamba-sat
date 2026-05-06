@@ -1,0 +1,11 @@
+{
+  "backend": "claude_code",
+  "model": "claude_code (manual)",
+  "runs": [
+    "wide_window",
+    "wide_window_v2"
+  ],
+  "split": "test",
+  "n_samples": 36,
+  "timestamp": "20260505T155432Z"
+}

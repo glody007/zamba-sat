@@ -1,0 +1,14 @@
+{
+  "deforestation_detected": true,
+  "change_pattern": "expansion",
+  "trajectory_confidence": "medium",
+  "severity": "low",
+  "clearing_type": "agriculture",
+  "area_bucket_t1": "1_10ha",
+  "area_bucket_t0": "10_100ha",
+  "active_operation": false,
+  "active_machinery_visible": false,
+  "smoke_or_fire_visible": false,
+  "recent_road_construction": false,
+  "frame_quality": ["good", "good"]
+}

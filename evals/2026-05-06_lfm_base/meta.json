@@ -1,0 +1,11 @@
+{
+  "backend": "local",
+  "model": "LiquidAI/LFM2.5-VL-450M-GGUF",
+  "runs": [
+    "wide_window",
+    "wide_window_v2"
+  ],
+  "split": "test",
+  "n_samples": 36,
+  "timestamp": "20260506T090524Z"
+}
