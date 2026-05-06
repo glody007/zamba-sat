@@ -1,0 +1,62 @@
+# leap-finetune config for zamba-sat — full SFT of LFM2.5-VL-450M on the
+# 90-day Congo Basin deforestation dataset, on Modal H100.
+#
+# Mirrors wildfire-prevention/configs/wildfire_finetune_modal.yaml.
+# Run:
+#   leap-finetune train --config configs/zamba_finetune_modal.yaml
+#
+# Before running, upload data/finetune/ to the Modal volume named
+# `zamba-deforestation`:
+#
+#   modal volume create zamba-deforestation
+#   modal volume put zamba-deforestation data/finetune /outputs/data/zamba
+
+project_name: "zamba-deforestation"
+model_name: "lfm2.5-VL-450M"
+training_type: "vlm_sft"
+
+dataset:
+  path: "/outputs/data/zamba/zamba_train.jsonl"
+  type: "vlm_sft"
+  image_root: "/outputs/data/zamba/images"
+
+training_config:
+  extends: "DEFAULT_VLM_SFT"
+  # Small dataset (36 train rows; 30 if --skip-clouds was used). Keep epochs
+  # modest to avoid memorising; prefer multiple checkpoints over a long run.
+  num_train_epochs: 5
+  per_device_train_batch_size: 2
+  gradient_accumulation_steps: 8       # effective batch = 16
+  learning_rate: 2e-5
+  lr_scheduler_type: "cosine"
+  warmup_ratio: 0.03
+  seed: 42
+  eval_on_start: false
+  eval_strategy: "epoch"
+  save_strategy: "epoch"
+  logging_steps: 5
+  tracker: "trackio"
+  # Replace with your own HF space — leave commented if you don't want
+  # an external tracker.
+  # trackio_space_id: "glody007/zamba-deforestation-finetune"
+
+peft_config:
+  extends: "DEFAULT_VLM_LORA"
+  use_peft: false                      # full fine-tune (matches wildfire)
+
+benchmarks:
+  image_root: "/outputs/data/zamba/images"
+  benchmarks:
+    - name: "zamba_eval"
+      path: "/outputs/data/zamba/zamba_test.jsonl"
+      metric: "short_answer"
+      # Our XML-CoT response is ~500–800 tokens — give headroom.
+      max_new_tokens: 1024
+
+modal:
+  app_name: "zamba-deforestation"
+  gpu: "H100:1"
+  timeout: 7200                        # 2 h
+  output_volume: "zamba-deforestation"
+  output_dir: "/outputs"
+  detach: false

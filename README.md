@@ -322,6 +322,76 @@ The published 90-day dataset has **36 test samples** across Yangambi,
 Kindu, and Lusambo. Anthropic-vs-Anthropic agreement gives you the ceiling
 the fine-tuned LFM should aspire to.
 
+## Fine-tuning
+
+We follow the Liquid `leap-finetune` workflow. Step 1 happens in this
+repo; steps 2–4 happen on Modal (or any GPU host).
+
+### 1. Convert labeled samples to leap-finetune JSONL
+
+```bash
+uv run scripts/prepare_finetune.py \
+    --runs wide_window wide_window_v2 \
+    --output data/finetune
+```
+
+Outputs:
+
+```
+data/finetune/
+├── zamba_train.jsonl     # 36 rows, one per train sample
+├── zamba_test.jsonl      # 36 rows, one per test sample
+└── images/               # 288 PNGs (4 per sample, flattened filenames)
+```
+
+Each JSONL row's `messages` array follows the leap-finetune VLM SFT format:
+
+- `user.content[0..3]`: four `{"type":"image","image":"<filename>"}` blocks for `rgb_t1`, `swir_t1`, `rgb_t0`, `swir_t0`
+- `user.content[4]`: `{"type":"text","text":"<SYSTEM_PROMPT>\n\n<per-sample user text>"}`
+- `assistant.content[0]`: `{"type":"text","text":"<XML-CoT response>"}` reconstructed from `annotation_reasoning.txt` + `annotation.json`
+
+Use `--skip-clouds` to drop `cloud_artifact` rows (42 of 72) and train
+only on the 30 signal samples.
+
+### 2. Upload to Modal volume + run leap-finetune
+
+Config: [`configs/zamba_finetune_modal.yaml`](configs/zamba_finetune_modal.yaml).
+Mirrors `wildfire-prevention/configs/wildfire_finetune_modal.yaml` —
+`vlm_sft` over `LFM2.5-VL-450M`, full fine-tune (LoRA off), 5 epochs,
+H100×1 on Modal, eval block pointed at our test JSONL.
+
+```bash
+# 1. Create the Modal volume and upload the prepared data
+modal volume create zamba-deforestation
+modal volume put zamba-deforestation data/finetune /outputs/data/zamba
+
+# 2. Kick off training
+leap-finetune train --config configs/zamba_finetune_modal.yaml
+```
+
+Outputs (checkpoints, eval metrics, logs) land in
+`/outputs/zamba-deforestation/<run-id>/` on the volume. Pull a checkpoint
+back with `modal volume get zamba-deforestation <path>`.
+
+### 3. Quantize to GGUF and push to HF
+
+After training, convert the LoRA-merged checkpoint to GGUF (Q8_0 to
+match our baseline eval) and push to a new HF model repo.
+
+### 4. Re-evaluate against base baseline
+
+Spin up `llama-server` against the fine-tuned GGUF and re-run:
+
+```bash
+uv run scripts/evaluate.py --backend local \
+    --server-url http://localhost:8080 \
+    --model glody007/zamba-deforestation-detector \
+    --runs wide_window wide_window_v2 --split test
+```
+
+The composite-accuracy delta from the 0% LFM-base baseline in
+`evals/2026-05-06_lfm_base/report.md` is the headline result.
+
 ## Tests
 
 ```bash
