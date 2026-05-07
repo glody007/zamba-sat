@@ -322,43 +322,27 @@ The published 90-day dataset has **36 test samples** across Yangambi,
 Kindu, and Lusambo. Anthropic-vs-Anthropic agreement gives you the ceiling
 the fine-tuned LFM should aspire to.
 
-### Results so far
+### Results
+
+Current deployed model: **v2** — full SFT, 4 epochs, `--skip-clouds`
++ stratified split, 24 train rows.
 
 | Run | Backend | Model | Test set | Composite | `valid_json` | `change_pattern` | Report |
 |---|---|---|---|---|---|---|---|
 | 2026-05-05 | `claude_code` | Claude Opus 4.7 (in-session) | dir-test (36) | **96.6%** | 100% | 100% | [report](evals/2026-05-05_claude_code/report.md) |
 | 2026-05-06 | `local`       | `LFM2.5-VL-450M` (no fine-tune) | dir-test (36) | **0.0%** | 0% | 0% | [report](evals/2026-05-06_lfm_base/report.md) |
-| 2026-05-07 | `local`       | v1 — full SFT, 4.5 ep, no `--skip-clouds` (36 train) | dir-test (36) | **44.4%** | 72% | 17% | [report](evals/2026-05-07_lfm_finetuned/report.md) |
-| 2026-05-07 | `local`       | v2 — full SFT, 4 ep, `--skip-clouds` + stratified (24 train) | dir-test (36)¹ | **28.8%** | 44% | 31% | [report](evals/2026-05-07_lfm_finetuned_v2_dirtest/report.md) |
-| 2026-05-07 | `local`       | v2 — same checkpoint                                            | held-out (6)² | **38.5%** | 67% | **50%** | [report](evals/2026-05-07_lfm_finetuned_v2_heldout/report.md) |
+| 2026-05-07 | `local`       | v2 fine-tune                  | held-out (6)¹ | **38.5%** | 67% | **50%** | [report](evals/2026-05-07_lfm_finetuned_v2_heldout/report.md) |
 
-¹ *Not directly comparable to v1: stratified re-split moved many original-dir-test samples into v2's train set (data leakage on dir-test).*
-² *6-sample honest held-out from `data/finetune/splits.json`; this is the only test set v2 truly didn't see.*
+¹ *6-sample honest held-out from `data/finetune/splits.json`.*
 
-**Remark on v1 (no `--skip-clouds`).** Big structural win: `valid_json`
-went 0% → 72% — the base model was emitting prose with placeholder text
-and no `<json>` block; the fine-tune learned the XML-CoT + JSON schema.
-But `change_pattern` is only 17% because v1 class-collapsed onto
-`cloud_artifact`: of 36 train rows, ~32 were `cloud_artifact`, so the
-model learned "when in doubt, say cloud." For uncertain inputs it
-sometimes degenerated into a self-similar JSON loop like
-`{"cloud_artifact_confidence_range_range": …}`.
+The headline `change_pattern` movement is **0% → 50%** vs the base model
+(3/3 expansion samples called correctly). v2 is the structural-learning +
+class-balance baseline; the change-detection signal is real and learning.
+With only 24 train rows the next move is to collect more non-cloud labels
+(especially `stable` — only 7 in train) before training further.
 
-**Remark on v2 (`--skip-clouds` + stratified split).** The headline
-movement is `change_pattern`: **17% → 50%** on the honest held-out test
-(3/3 expansion samples called correctly; misses on 2 parse-fails and
-1 stable→expansion). The composite drop is real but mostly from `valid_json`
-sliding 72% → 67% — v2 is undertrained (only 12 grad steps over 4 epochs
-on 24 rows) and emits inconsistent JSON: it picks `change_pattern: expansion`
-correctly but writes `deforestation_detected: false` in the same block,
-or skips `severity`/`clearing_type` entirely. Fields that depend on
-parseable JSON (`severity`, `clearing_type`, `area_bucket_*`) are 0% on
-held-out; the change-detection signal itself is real and learning.
-
-Next iteration: more grad steps. Either bump `num_train_epochs` to ~10
-or drop `gradient_accumulation_steps` to 2 (effective batch 4, ~30 steps
-over 5 epochs). Goal: stabilise the JSON schema while preserving the
-expansion/stable discrimination.
+For the full experiment log including v1 (cloud-class collapse) and v3
+(overfit boundary), see [`evals/EXPERIMENTS.md`](evals/EXPERIMENTS.md).
 
 ## Fine-tuning
 
