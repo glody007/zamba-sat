@@ -385,34 +385,79 @@ H100×1 on Modal, eval block pointed at our test JSONL.
 ```bash
 # 1. Create the Modal volume and upload the prepared data
 modal volume create zamba-deforestation
-modal volume put zamba-deforestation data/finetune /outputs/data/zamba
+modal volume put zamba-deforestation data/finetune /data/zamba
 
-# 2. Kick off training
-leap-finetune train --config configs/zamba_finetune_modal.yaml
+# 2. Kick off training (run from the leap-finetune repo dir)
+cd ../leap-finetune
+uv run leap-finetune $OLDPWD/configs/zamba_finetune_modal.yaml
 ```
 
-Outputs (checkpoints, eval metrics, logs) land in
-`/outputs/zamba-deforestation/<run-id>/` on the volume. Pull a checkpoint
-back with `modal volume get zamba-deforestation <path>`.
+Checkpoints land at
+`/<run-name>/<epoch-checkpoint>/` on the `zamba-deforestation` volume.
+Pull the final HF-format checkpoint with `modal volume get`:
 
-### 3. Quantize to GGUF and push to HF
+```bash
+RUN=lfm2.5-VL-450M-vlm_sft-zamba_trai-...     # from training output
+LAST=$(uv run modal volume ls zamba-deforestation /$RUN | grep -v ray_logs | tail -1)
 
-After training, convert the LoRA-merged checkpoint to GGUF (Q8_0 to
-match our baseline eval) and push to a new HF model repo.
+mkdir -p ~/checkpoints/zamba-deforestation && cd ~/checkpoints/zamba-deforestation
+for f in model.safetensors config.json tokenizer.json tokenizer_config.json \
+         processor_config.json chat_template.jinja generation_config.json; do
+  uv run modal volume get zamba-deforestation "/$RUN/$LAST/$f" "./$f"
+done
+```
+
+### 3. Quantize to GGUF
+
+```bash
+uv run scripts/quantize.py \
+    --checkpoint ~/checkpoints/zamba-deforestation \
+    --output ./outputs/zamba-deforestation-Q8_0.gguf
+```
+
+Produces both the backbone (`outputs/zamba-deforestation-Q8_0.gguf`,
+~360 MB) and the matching vision projector
+(`outputs/mmproj-zamba-deforestation-Q8_0.gguf`, ~180 MB). Strips a
+redundant `lm_head.weight` if DeepSpeed's consolidation broke
+`tie_word_embeddings`. Mirrors
+`wildfire-prevention/scripts/quantize.py`.
 
 ### 4. Re-evaluate against base baseline
 
-Spin up `llama-server` against the fine-tuned GGUF and re-run:
+Spin up `llama-server` against the fine-tuned GGUF and re-run
+`evaluate.py`:
 
 ```bash
+# (in another shell)
+llama-server \
+    -m outputs/zamba-deforestation-Q8_0.gguf \
+    --mmproj outputs/mmproj-zamba-deforestation-Q8_0.gguf \
+    --port 8000 -c 8192
+
+# eval — pass --splits-file to score on the same held-out used at training
 uv run scripts/evaluate.py --backend local \
-    --server-url http://localhost:8080 \
-    --model glody007/zamba-deforestation-detector \
-    --runs wide_window wide_window_v2 --split test
+    --server-url http://localhost:8000 \
+    --model zamba-deforestation-Q8_0 \
+    --runs wide_window wide_window_v2 --split test \
+    --splits-file data/finetune/splits.json
 ```
 
-The composite-accuracy delta from the 0% LFM-base baseline in
-`evals/2026-05-06_lfm_base/report.md` is the headline result.
+Headline result on the held-out: composite **0% → 38.5%**, `valid_json`
+**0% → 67%**, `change_pattern` **0% → 50%** vs the LFM-base baseline at
+`evals/2026-05-06_lfm_base/report.md`.
+
+### 5. Push GGUFs to HuggingFace
+
+```bash
+uv run scripts/push_gguf_to_hf.py \
+    --backbone ./outputs/zamba-deforestation-Q8_0.gguf \
+    --mmproj   ./outputs/mmproj-zamba-deforestation-Q8_0.gguf \
+    --repo     glody007/zamba-deforestation-detector
+```
+
+Uploads both files plus a model card with the eval table. Mirrors
+`wildfire-prevention/scripts/push_gguf_to_hf.py`. Published model:
+[`glody007/zamba-deforestation-detector`](https://huggingface.co/glody007/zamba-deforestation-detector).
 
 ## Tests
 
