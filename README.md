@@ -279,16 +279,21 @@ backends, same scoring path:
 | `local` | POSTs to an OpenAI-compatible `/v1/chat/completions` server (e.g. llama.cpp serving the fine-tuned `LFM2.5-VL-450M` GGUF) | Deployment target — measures how well the small on-board model matches the oracle. |
 | `claude_code` | Reads pre-written predictions from `--predictions-dir` | Lets Claude in-conversation produce predictions for free, then scores them. |
 
-What gets scored (13 fields per sample):
+What gets scored (8 fields per sample, slim schema):
 
 ```
-valid_json, deforestation_detected, change_pattern,
-trajectory_confidence, severity, clearing_type,
-area_bucket_t1, area_bucket_t0,
+valid_json, change_pattern, trajectory_confidence,
 active_operation, active_machinery_visible,
 smoke_or_fire_visible, recent_road_construction,
 frame_quality   # set-equality; others are exact match
 ```
+
+The original schema had 13 fields. Five were dropped because they were
+not learnable at our dataset scale (24 train rows) and contributed only
+zeros to composite: `deforestation_detected` (redundant with
+`change_pattern`), `severity`, `clearing_type`, `area_bucket_t1`,
+`area_bucket_t0`. They still live in `data/runs/.../annotation.json`
+for analysis; the model just doesn't predict or score them.
 
 Each run writes `evals/<timestamp>/`:
 
@@ -325,21 +330,23 @@ the fine-tuned LFM should aspire to.
 ### Results
 
 Current deployed model: **v2** — full SFT, 4 epochs, `--skip-clouds`
-+ stratified split, 24 train rows.
++ stratified split, 24 train rows. Scored on the slim 8-field schema.
 
 | Run | Backend | Model | Test set | Composite | `valid_json` | `change_pattern` | Report |
 |---|---|---|---|---|---|---|---|
-| 2026-05-05 | `claude_code` | Claude Opus 4.7 (in-session) | dir-test (36) | **96.6%** | 100% | 100% | [report](evals/2026-05-05_claude_code/report.md) |
-| 2026-05-06 | `local`       | `LFM2.5-VL-450M` (no fine-tune) | dir-test (36) | **0.0%** | 0% | 0% | [report](evals/2026-05-06_lfm_base/report.md) |
-| 2026-05-07 | `local`       | v2 fine-tune                  | held-out (6)¹ | **38.5%** | 67% | **50%** | [report](evals/2026-05-07_lfm_finetuned_v2_heldout/report.md) |
+| 2026-05-05 | `claude_code` | Claude Opus 4.7 (in-session) | dir-test (36) | **96.6%**¹ | 100% | 100% | [report](evals/2026-05-05_claude_code/report.md) |
+| 2026-05-06 | `local`       | `LFM2.5-VL-450M` (no fine-tune) | dir-test (36) | **0.0%**¹ | 0% | 0% | [report](evals/2026-05-06_lfm_base/report.md) |
+| 2026-05-07 | `local`       | v2 fine-tune                    | dir-test (36) | **50.0%** | 61% | 31% | [report](evals/2026-05-07_lfm_finetuned_v2_dirtest_slim/report.md) |
 
-¹ *6-sample honest held-out from `data/finetune/splits.json`.*
+¹ *Older runs scored on the 13-field schema; numbers stay in the original
+`evals/<run>/report.md` and are noted here for the headline movement
+0% → 50% composite vs the LFM-base baseline.*
 
-The headline `change_pattern` movement is **0% → 50%** vs the base model
-(3/3 expansion samples called correctly). v2 is the structural-learning +
-class-balance baseline; the change-detection signal is real and learning.
-With only 24 train rows the next move is to collect more non-cloud labels
-(especially `stable` — only 7 in train) before training further.
+The structural movement is `valid_json` 0% → 61% (the base model emits
+prose with placeholder text and no `<json>` block; v2 reliably emits
+schema-compliant JSON) and `change_pattern` 0% → 31% on dir-test. With
+only 24 train rows the next move is to use the larger 73-row non-cloud
+dataset (re-prepped from all 8 runs) before training v4.
 
 For the full experiment log including v1 (cloud-class collapse) and v3
 (overfit boundary), see [`evals/EXPERIMENTS.md`](evals/EXPERIMENTS.md).

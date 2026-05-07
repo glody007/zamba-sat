@@ -14,30 +14,29 @@ from typing import List, Literal
 from pydantic import BaseModel, Field, ValidationError
 
 ChangePattern = Literal["stable", "clearing", "expansion", "regrowth", "cloud_artifact"]
-ClearingType = Literal[
-    "none",
-    "logging_roads",
-    "patch_clearing",
-    "burn_scar",
-    "agriculture",
-    "mining",
-    "infrastructure",
-]
-AreaBucket = Literal["none", "lt_1ha", "1_10ha", "10_100ha", "gt_100ha"]
 FrameQuality = Literal["good", "cloudy", "partial", "no_data"]
-Severity = Literal["none", "low", "medium", "high"]
 Confidence = Literal["low", "medium", "high"]
 
 
 class DeforestationAnnotation(BaseModel):
-    deforestation_detected: bool
+    """Slim deforestation schema (v2 onwards).
+
+    Five fields from the original 13-field schema were dropped because
+    they were not learnable at our dataset scale (24 train rows) and
+    introduced internal contradictions (e.g. `change_pattern: expansion`
+    + `deforestation_detected: false`):
+
+      - deforestation_detected  (redundant with change_pattern)
+      - severity, clearing_type, area_bucket_t1, area_bucket_t0
+        (fine-grained categoricals; 0% on held-out)
+
+    Existing `data/runs/.../annotation.json` files retain all 13 fields;
+    `prepare_finetune.py` filters the dropped keys at training-data
+    rendering time, and `evaluate.py` only scores the kept fields.
+    """
+
     change_pattern: ChangePattern
     trajectory_confidence: Confidence
-    severity: Severity
-    clearing_type: ClearingType
-
-    area_bucket_t1: AreaBucket
-    area_bucket_t0: AreaBucket
 
     active_operation: bool
     active_machinery_visible: bool

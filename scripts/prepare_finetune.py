@@ -76,8 +76,22 @@ def _parse_reasoning_sections(text: str) -> dict[str, str]:
     return sections
 
 
+# Slim-schema drop list: keys present in legacy annotation.json files but
+# excluded from the model output (see src/zamba_sat/schema.py). The keys
+# stay in the on-disk GT (useful for analysis), they just don't make it
+# into the assistant text the model is trained to emit.
+SLIM_DROP_KEYS = {
+    "deforestation_detected",
+    "severity",
+    "clearing_type",
+    "area_bucket_t1",
+    "area_bucket_t0",
+}
+
+
 def _render_xml_cot(reasoning_text: str, annotation: dict) -> str:
     """Reconstruct the XML chain-of-thought response the model is trained to emit."""
+    annotation = {k: v for k, v in annotation.items() if k not in SLIM_DROP_KEYS}
     sections = _parse_reasoning_sections(reasoning_text)
     parts = []
     for tag in SECTION_TAGS:

@@ -55,18 +55,13 @@ record:
 
 ```json
 {{
-  "deforestation_detected": true,
-  "change_pattern": "expansion",     // expansion | stable | cloud_artifact
+  "change_pattern": "expansion",     // expansion | stable | clearing | regrowth | cloud_artifact
   "trajectory_confidence": "medium", // low | medium | high
-  "severity": "medium",              // none | low | medium | high
-  "clearing_type": "small_holder",
-  "area_bucket_t1": "1-5_ha",
-  "area_bucket_t0": "0-1_ha",
   "active_operation": false,
   "active_machinery_visible": false,
   "smoke_or_fire_visible": false,
   "recent_road_construction": false,
-  "frame_quality": ["good"]
+  "frame_quality": ["good", "good"]
 }}
 ```
 

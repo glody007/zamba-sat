@@ -52,16 +52,13 @@ RUNS_DIR = REPO_ROOT / "data" / "runs"
 EVALS_DIR = REPO_ROOT / "evals"
 
 
-# Fields scored. Order matters for report column order.
+# Fields scored. Order matters for report column order. The slim schema
+# drops 5 fields (deforestation_detected, severity, clearing_type,
+# area_bucket_t1, area_bucket_t0) — see src/zamba_sat/schema.py.
 EVAL_FIELDS: list[str] = [
     "valid_json",
-    "deforestation_detected",
     "change_pattern",
     "trajectory_confidence",
-    "severity",
-    "clearing_type",
-    "area_bucket_t1",
-    "area_bucket_t0",
     "active_operation",
     "active_machinery_visible",
     "smoke_or_fire_visible",

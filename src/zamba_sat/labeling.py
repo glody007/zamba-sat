@@ -94,13 +94,8 @@ Reasoning: [one sentence]
 
 <json>
 {
-  "deforestation_detected": <bool>,
   "change_pattern": "<stable|clearing|expansion|regrowth|cloud_artifact>",
   "trajectory_confidence": "<low|medium|high>",
-  "severity": "<none|low|medium|high>",
-  "clearing_type": "<none|logging_roads|patch_clearing|burn_scar|agriculture|mining|infrastructure>",
-  "area_bucket_t1": "<none|lt_1ha|1_10ha|10_100ha|gt_100ha>",
-  "area_bucket_t0": "<none|lt_1ha|1_10ha|10_100ha|gt_100ha>",
   "active_operation": <bool>,
   "active_machinery_visible": <bool>,
   "smoke_or_fire_visible": <bool>,
@@ -110,14 +105,12 @@ Reasoning: [one sentence]
 </json>
 
 Field rules:
-  - deforestation_detected: true only if change_pattern is "clearing" or "expansion".
+  - change_pattern: the headline call. "stable" = no meaningful change; \
+"expansion" = clearing visibly grew between t-1 and t-0; "clearing" = new \
+clearing appeared from intact forest; "regrowth" = clearing partly recovered; \
+"cloud_artifact" = at least one frame too obscured to compare reliably.
   - trajectory_confidence: "low" if either frame_quality != "good" or the change \
 is ambiguous; "high" only when both frames are clean AND the change is unambiguous.
-  - severity: "none" when no deforestation; otherwise scale by cleared area at \
-t-0: low (<1 ha), medium (1-10 ha), high (>10 ha).
-  - clearing_type: "none" if change_pattern is "stable", "regrowth", or "cloud_artifact".
-  - area_bucket_*: TOTAL cleared/bare area in that frame, not just the new portion. \
-Use "none" for essentially intact forest.
   - Booleans: be conservative - true only when you can clearly see the indicator.
   - frame_quality: index 0 = t-1, index 1 = t-0.
 
