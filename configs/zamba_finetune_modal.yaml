@@ -22,11 +22,13 @@ dataset:
 
 training_config:
   extends: "DEFAULT_VLM_SFT"
-  # Small dataset (36 train rows; 30 if --skip-clouds was used). Keep epochs
-  # modest to avoid memorising; prefer multiple checkpoints over a long run.
-  num_train_epochs: 5
+  # With --skip-clouds + stratified split, train is ~24 rows. v2 (5 ep, grad
+  # accum 4) only got 12 grad steps and emitted inconsistent JSON. v3 bumps
+  # to 10 epochs → ~30 grad steps; goal is to stabilise JSON schema while
+  # preserving the expansion/stable discrimination signal.
+  num_train_epochs: 10
   per_device_train_batch_size: 2
-  gradient_accumulation_steps: 8       # effective batch = 16
+  gradient_accumulation_steps: 4       # effective batch = 8
   learning_rate: 2e-5
   lr_scheduler_type: "cosine"
   warmup_ratio: 0.03

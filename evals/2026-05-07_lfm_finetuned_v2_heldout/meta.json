@@ -1,0 +1,11 @@
+{
+  "backend": "local",
+  "model": "zamba-deforestation-v2-Q8_0",
+  "runs": [
+    "wide_window",
+    "wide_window_v2"
+  ],
+  "split": "test",
+  "n_samples": 6,
+  "timestamp": "20260507T152544Z"
+}

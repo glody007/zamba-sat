@@ -97,22 +97,51 @@ class SampleResult:
     error: str | None = None
 
 
-def load_samples(runs: list[str], split: str) -> list[Sample]:
+def load_samples(
+    runs: list[str],
+    split: str,
+    splits_file: Path | None = None,
+) -> list[Sample]:
+    """Load test/train samples from `data/runs/`.
+
+    By default, walks `data/runs/<run>/<split>/...` (the directory-based
+    split). When `splits_file` is provided, walks both train and test dirs
+    and filters by membership in `splits_file[split]` — needed when prep
+    used a stratified re-split (e.g. with --skip-clouds).
+    """
+    membership: set[str] | None = None
+    if splits_file is not None and splits_file.exists():
+        data = json.loads(splits_file.read_text())
+        # splits.json keys (from prep) are "{run}__{dir_split}__{location}__{sNN}"
+        membership = set(data.get(split, []))
+
     samples: list[Sample] = []
     for run in runs:
         run_dir = RUNS_DIR / run
         if not run_dir.is_dir():
             print(f"skip: {run_dir} (missing)")
             continue
-        for ann_path in sorted(run_dir.glob(f"{split}/*/*/annotation.json")):
+        # If using splits_file, we need to scan both dir-splits since the
+        # logical split no longer matches the dir layout.
+        glob_pat = "*/*/*/annotation.json" if membership is not None else f"{split}/*/*/annotation.json"
+        for ann_path in sorted(run_dir.glob(glob_pat)):
             sd = ann_path.parent
+            dir_split = sd.parts[-3]
+            location = sd.parent.name
+            sample_basename = sd.name
+
+            if membership is not None:
+                key = f"{run}__{dir_split}__{location}__{sample_basename}"
+                if key not in membership:
+                    continue
+
             meta = json.loads((sd / "metadata.json").read_text())
             gt = json.loads(ann_path.read_text())
             samples.append(Sample(
-                sample_id=f"{run}/{split}/{sd.parent.name}/{sd.name}",
+                sample_id=f"{run}/{dir_split}/{location}/{sample_basename}",
                 run=run,
-                split=split,
-                location_id=sd.parent.name,
+                split=dir_split,
+                location_id=location,
                 location_name=meta.get("location_name", ""),
                 tile_lon=float(meta["tile_lon"]),
                 tile_lat=float(meta["tile_lat"]),
@@ -278,9 +307,14 @@ def main() -> None:
     p.add_argument("--predictions-dir", type=Path)
     p.add_argument("--concurrency", type=int, default=3)
     p.add_argument("--out-dir", type=Path)
+    p.add_argument("--splits-file", type=Path,
+                   help="Optional path to splits.json (e.g. data/finetune/splits.json) — "
+                        "filter samples by logical split rather than dir-split. "
+                        "Use when prep applied a stratified re-split (--skip-clouds). "
+                        "Default: dir-based split, for apples-to-apples baseline comparison.")
     args = p.parse_args()
 
-    samples = load_samples(args.runs, args.split)
+    samples = load_samples(args.runs, args.split, splits_file=args.splits_file)
     if not samples:
         raise SystemExit(f"no samples found for runs={args.runs} split={args.split}")
     print(f"Loaded {len(samples)} samples for evaluation")

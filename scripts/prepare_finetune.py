@@ -8,13 +8,21 @@ Output layout:
     <output_dir>/
     ├── zamba_train.jsonl
     ├── zamba_test.jsonl
+    ├── splits.json                           # logical split assignment
     └── images/
-        └── <sample_id>__<frame>.png        # 4 per sample
+        └── <sample_id>__<frame>.png          # 4 per sample
 
 Each JSONL row contains a `messages` array — user message has 4 image refs
 plus the SYSTEM_PROMPT concatenated with the per-sample user text; assistant
 message is the full XML-CoT response reconstructed from
 `annotation_reasoning.txt` and `annotation.json`.
+
+By default we honor the `data/runs/<run>/{train,test}/` directory split.
+With `--skip-clouds` (recommended), the dir-split breaks because expansion
+samples cluster in the test side — so we pool all non-cloud samples,
+stratified-shuffle by `change_pattern` with `--seed`, and split by
+`--train-frac`. `splits.json` records the resulting assignment so
+`evaluate.py` can score on the same test set.
 
 For Modal: upload `<output_dir>/` to a Modal volume and point the
 `leap-finetune` config at it (set `image_root` to `images/`).
@@ -22,15 +30,18 @@ For Modal: upload `<output_dir>/` to a Modal volume and point the
 Usage:
     uv run scripts/prepare_finetune.py \\
         --runs wide_window wide_window_v2 \\
-        --output data/finetune
+        --output data/finetune \\
+        --skip-clouds
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import random
 import re
 import shutil
+from collections import defaultdict
 from pathlib import Path
 
 from zamba_sat.labeling import SYSTEM_PROMPT, render_user_text
@@ -104,46 +115,88 @@ def _make_row(
     }
 
 
-def _process_run(
-    run: str,
-    out_jsonl: dict[str, list[dict]],
-    images_dir: Path,
+def _discover_samples(
+    runs: list[str],
     skip_clouds: bool,
     counters: dict[str, int],
-) -> None:
-    """Walk one run dir and append rows to out_jsonl[split]."""
-    run_dir = RUNS_DIR / run
-    if not run_dir.is_dir():
-        print(f"skip: {run_dir} (missing)")
-        return
-    for ann_path in sorted(run_dir.glob("*/*/*/annotation.json")):
-        sd = ann_path.parent
-        split = sd.parts[-3]   # train | test
-        location_id = sd.parts[-2]
-        sample_dir_name = sd.name   # sNN_tNN
-        sample_id = f"{run}__{split}__{location_id}__{sample_dir_name}"
+) -> list[dict]:
+    """Walk run dirs and return one record per usable sample.
 
-        annotation = json.loads(ann_path.read_text())
-        if skip_clouds and annotation.get("change_pattern") == "cloud_artifact":
-            counters["skipped_clouds"] += 1
+    Each record has: sample_id, dir_split (from filesystem), change_pattern,
+    annotation, reasoning_text, meta. The `dir_split` is the original
+    train/test from the directory layout — callers may keep it (default
+    behavior) or override via stratified shuffle (when --skip-clouds).
+    """
+    out: list[dict] = []
+    for run in runs:
+        run_dir = RUNS_DIR / run
+        if not run_dir.is_dir():
+            print(f"skip: {run_dir} (missing)")
             continue
+        for ann_path in sorted(run_dir.glob("*/*/*/annotation.json")):
+            sd = ann_path.parent
+            dir_split = sd.parts[-3]   # train | test
+            location_id = sd.parts[-2]
+            sample_dir_name = sd.name   # sNN_tNN
+            sample_id = f"{run}__{dir_split}__{location_id}__{sample_dir_name}"
 
-        reasoning_path = sd / "annotation_reasoning.txt"
-        if not reasoning_path.exists():
-            counters["missing_reasoning"] += 1
-            continue
-        reasoning_text = reasoning_path.read_text()
+            annotation = json.loads(ann_path.read_text())
+            if skip_clouds and annotation.get("change_pattern") == "cloud_artifact":
+                counters["skipped_clouds"] += 1
+                continue
 
-        meta = json.loads((sd / "metadata.json").read_text())
-        user_text = render_user_text(
-            lat=meta["tile_lat"], lon=meta["tile_lon"],
-            region_name=meta.get("location_name", ""),
-            date_t1=meta["actual_t1_datetime"],
-            date_t0=meta["actual_t0_datetime"],
-        )
-        assistant_text = _render_xml_cot(reasoning_text, annotation)
+            reasoning_path = sd / "annotation_reasoning.txt"
+            if not reasoning_path.exists():
+                counters["missing_reasoning"] += 1
+                continue
+            out.append({
+                "sample_id": sample_id,
+                "dir_split": dir_split,
+                "change_pattern": annotation.get("change_pattern"),
+                "annotation": annotation,
+                "reasoning_text": reasoning_path.read_text(),
+                "meta": json.loads((sd / "metadata.json").read_text()),
+                "sample_dir": sd,
+            })
+    return out
 
-        # Copy 4 PNGs into images/ with flattened filenames.
+
+def _stratified_split(
+    samples: list[dict],
+    train_frac: float,
+    seed: int,
+) -> dict[str, list[dict]]:
+    """Stratified shuffle/split by `change_pattern`."""
+    by_class: dict[str, list[dict]] = defaultdict(list)
+    for s in samples:
+        by_class[s["change_pattern"] or "_unknown"].append(s)
+
+    rng = random.Random(seed)
+    train: list[dict] = []
+    test: list[dict] = []
+    for cls in sorted(by_class):
+        rows = by_class[cls][:]
+        rng.shuffle(rows)
+        n_train = round(len(rows) * train_frac)
+        # Guarantee at least 1 train and 1 test per class when possible.
+        if len(rows) >= 2:
+            n_train = max(1, min(n_train, len(rows) - 1))
+        train.extend(rows[:n_train])
+        test.extend(rows[n_train:])
+    return {"train": train, "test": test}
+
+
+def _emit_rows(
+    samples: list[dict],
+    images_dir: Path,
+) -> tuple[list[dict], list[str]]:
+    """Copy images and build JSONL rows for a list of samples."""
+    rows: list[dict] = []
+    sample_ids: list[str] = []
+    for s in samples:
+        sd: Path = s["sample_dir"]
+        sample_id: str = s["sample_id"]
+
         frame_filenames: dict[str, str] = {}
         for f in FRAME_NAMES:
             src = sd / f"{f}.png"
@@ -156,8 +209,17 @@ def _process_run(
             print(f"  WARN missing frames for {sample_id}, got {list(frame_filenames)}")
             continue
 
-        row = _make_row(sample_id, frame_filenames, user_text, assistant_text)
-        out_jsonl[split].append(row)
+        m = s["meta"]
+        user_text = render_user_text(
+            lat=m["tile_lat"], lon=m["tile_lon"],
+            region_name=m.get("location_name", ""),
+            date_t1=m["actual_t1_datetime"],
+            date_t0=m["actual_t0_datetime"],
+        )
+        assistant_text = _render_xml_cot(s["reasoning_text"], s["annotation"])
+        rows.append(_make_row(sample_id, frame_filenames, user_text, assistant_text))
+        sample_ids.append(sample_id)
+    return rows, sample_ids
 
 
 def main() -> None:
@@ -167,7 +229,11 @@ def main() -> None:
     p.add_argument("--output", type=Path, default=Path("data/finetune"))
     p.add_argument("--skip-clouds", action="store_true",
                    help="Drop cloud_artifact samples (recommended for SFT — they "
-                        "are noise, not signal).")
+                        "are noise, not signal). Triggers a stratified re-split.")
+    p.add_argument("--seed", type=int, default=42,
+                   help="RNG seed for stratified shuffle (only used with --skip-clouds).")
+    p.add_argument("--train-frac", type=float, default=0.8,
+                   help="Train fraction for stratified split (only used with --skip-clouds).")
     args = p.parse_args()
 
     out_dir: Path = args.output
@@ -175,17 +241,41 @@ def main() -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     images_dir.mkdir(parents=True, exist_ok=True)
 
-    out_jsonl: dict[str, list[dict]] = {"train": [], "test": []}
     counters = {"skipped_clouds": 0, "missing_reasoning": 0}
-    for run in args.runs:
-        _process_run(run, out_jsonl, images_dir, args.skip_clouds, counters)
+    samples = _discover_samples(args.runs, args.skip_clouds, counters)
 
-    for split, rows in out_jsonl.items():
+    if args.skip_clouds:
+        # The original dir-split clusters expansion in test; restratify.
+        splits = _stratified_split(samples, args.train_frac, args.seed)
+        split_meta = {"strategy": "stratified", "seed": args.seed,
+                      "train_frac": args.train_frac, "skip_clouds": True}
+    else:
+        splits = {"train": [], "test": []}
+        for s in samples:
+            splits[s["dir_split"]].append(s)
+        split_meta = {"strategy": "directory", "skip_clouds": False}
+
+    splits_record: dict[str, list[str]] = {"train": [], "test": []}
+    for split, sample_list in splits.items():
+        rows, ids = _emit_rows(sample_list, images_dir)
         path = out_dir / f"zamba_{split}.jsonl"
         with path.open("w") as f:
             for row in rows:
                 f.write(json.dumps(row) + "\n")
         print(f"wrote {path}: {len(rows)} rows")
+        splits_record[split] = ids
+
+    # Per-class breakdown (helpful when validating the split).
+    for split, sample_list in splits.items():
+        cnt: dict[str, int] = defaultdict(int)
+        for s in sample_list:
+            cnt[s["change_pattern"] or "_unknown"] += 1
+        print(f"  {split} class counts: {dict(cnt)}")
+
+    splits_path = out_dir / "splits.json"
+    splits_path.write_text(json.dumps({**split_meta, **splits_record}, indent=2))
+    print(f"wrote {splits_path}")
+
     print(f"images/: {len(list(images_dir.glob('*.png')))} PNGs")
     if counters["skipped_clouds"]:
         print(f"skipped {counters['skipped_clouds']} cloud_artifact samples (--skip-clouds)")
