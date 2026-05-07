@@ -6,6 +6,8 @@ __pycache__/
 .ruff_cache/
 data/runs/
 data/finetune/
+outputs/
+llama.cpp
 *.egg-info/
 dist/
 build/

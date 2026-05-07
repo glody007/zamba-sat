@@ -322,6 +322,34 @@ The published 90-day dataset has **36 test samples** across Yangambi,
 Kindu, and Lusambo. Anthropic-vs-Anthropic agreement gives you the ceiling
 the fine-tuned LFM should aspire to.
 
+### Results so far
+
+| Run | Backend | Model | Composite | `valid_json` | `change_pattern` | Report |
+|---|---|---|---|---|---|---|
+| 2026-05-05 | `claude_code` | Claude Opus 4.7 (in-session) | **96.6%** | 100% | 100% | [report](evals/2026-05-05_claude_code/report.md) |
+| 2026-05-06 | `local`       | `LFM2.5-VL-450M` (no fine-tune) | **0.0%** | 0% | 0% | [report](evals/2026-05-06_lfm_base/report.md) |
+| 2026-05-07 | `local`       | `zamba-deforestation-Q8_0` (full SFT, 4.5 ep, no `--skip-clouds`) | **44.4%** | 72% | 17% | [report](evals/2026-05-07_lfm_finetuned/report.md) |
+
+**Remark on the 2026-05-07 fine-tune.** Big structural win: `valid_json`
+went 0% → 72% — the base model was emitting prose with placeholder text
+and no `<json>` block; the fine-tune learned to emit our XML-CoT + JSON
+schema reliably. But `change_pattern` is only 17% because of two failure
+modes:
+
+1. **Class collapse onto `cloud_artifact`.** Of 36 train rows, ~21 were
+   `cloud_artifact` (we did not pass `--skip-clouds`), so the model
+   learned "when in doubt, say cloud." It predicts `cloud_artifact` for
+   ~24 of 36 test samples (true distribution: 12 cloud / 18 expansion /
+   6 stable).
+2. **Schema hallucination on a subset.** For ~10 samples the JSON block
+   degenerates into a self-similar repetition like
+   `{"cloud_artifact": true, "cloud_artifact_confidence_range_range": …}`
+   — greedy decoding falling into an attractor on uncertain VL inputs.
+   Text-only generation is fine, so this is not a model-load issue.
+
+Next iteration: re-prep with `--skip-clouds` (drops 42 rows; trains on
+21 expansion + 9 stable) and retrain. Expected to fix #1 and likely #2.
+
 ## Fine-tuning
 
 We follow the Liquid `leap-finetune` workflow. Step 1 happens in this

@@ -1,0 +1,1770 @@
+[
+  {
+    "sample_id": "wide_window/test/kindu_drc/s00_t01",
+    "predicted": {
+      "_error": "annotation failed schema validation: 12 validation errors for DeforestationAnnotation\ndeforestation_detected\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nchange_pattern\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ntrajectory_confidence\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nseverity\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nclearing_type\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t1\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t0\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_operation\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_machinery_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nsmoke_or_fire_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrecent_road_construction\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nframe_quality\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "low",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "1_10ha",
+      "area_bucket_t0": "10_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": false,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": false
+    },
+    "error": "annotation failed schema validation: 12 validation errors for DeforestationAnnotation\ndeforestation_detected\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nchange_pattern\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ntrajectory_confidence\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nseverity\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nclearing_type\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t1\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t0\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_operation\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_machinery_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nsmoke_or_fire_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrecent_road_construction\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nframe_quality\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+  },
+  {
+    "sample_id": "wide_window/test/kindu_drc/s01_t01",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "low",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "1_10ha",
+      "area_bucket_t0": "10_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": false
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window/test/kindu_drc/s02_t01",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "low",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "1_10ha",
+      "area_bucket_t0": "10_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": false
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window/test/kindu_drc/s03_t01",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "low",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "1_10ha",
+      "area_bucket_t0": "10_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": false
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window/test/lusambo_drc/s00_t01",
+    "predicted": {
+      "_error": "annotation failed schema validation: 12 validation errors for DeforestationAnnotation\ndeforestation_detected\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nchange_pattern\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ntrajectory_confidence\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nseverity\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nclearing_type\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t1\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t0\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_operation\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_machinery_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nsmoke_or_fire_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrecent_road_construction\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nframe_quality\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "medium",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "10_100ha",
+      "area_bucket_t0": "gt_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": false,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": false
+    },
+    "error": "annotation failed schema validation: 12 validation errors for DeforestationAnnotation\ndeforestation_detected\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nchange_pattern\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ntrajectory_confidence\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nseverity\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nclearing_type\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t1\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t0\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_operation\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_machinery_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nsmoke_or_fire_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrecent_road_construction\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nframe_quality\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+  },
+  {
+    "sample_id": "wide_window/test/lusambo_drc/s01_t01",
+    "predicted": {
+      "_error": "annotation failed schema validation: 12 validation errors for DeforestationAnnotation\ndeforestation_detected\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nchange_pattern\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ntrajectory_confidence\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nseverity\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nclearing_type\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t1\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t0\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_operation\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_machinery_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nsmoke_or_fire_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrecent_road_construction\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nframe_quality\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "medium",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "10_100ha",
+      "area_bucket_t0": "gt_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": false,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": false
+    },
+    "error": "annotation failed schema validation: 12 validation errors for DeforestationAnnotation\ndeforestation_detected\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nchange_pattern\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ntrajectory_confidence\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nseverity\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nclearing_type\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t1\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t0\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_operation\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_machinery_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nsmoke_or_fire_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrecent_road_construction\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nframe_quality\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+  },
+  {
+    "sample_id": "wide_window/test/lusambo_drc/s02_t01",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": true,
+      "change_pattern": true,
+      "trajectory_confidence": true,
+      "severity": true,
+      "clearing_type": true,
+      "area_bucket_t1": true,
+      "area_bucket_t0": true,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": true
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window/test/lusambo_drc/s03_t01",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": true,
+      "change_pattern": true,
+      "trajectory_confidence": true,
+      "severity": true,
+      "clearing_type": true,
+      "area_bucket_t1": true,
+      "area_bucket_t0": true,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": true
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window/test/yangambi_drc/s00_t01",
+    "predicted": {
+      "_error": "annotation failed schema validation: 12 validation errors for DeforestationAnnotation\ndeforestation_detected\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nchange_pattern\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ntrajectory_confidence\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nseverity\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nclearing_type\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t1\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t0\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_operation\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_machinery_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nsmoke_or_fire_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrecent_road_construction\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nframe_quality\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+    },
+    "ground_truth": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "field_matches": {
+      "valid_json": false,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": false
+    },
+    "error": "annotation failed schema validation: 12 validation errors for DeforestationAnnotation\ndeforestation_detected\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nchange_pattern\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ntrajectory_confidence\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nseverity\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nclearing_type\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t1\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t0\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_operation\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_machinery_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nsmoke_or_fire_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrecent_road_construction\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nframe_quality\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+  },
+  {
+    "sample_id": "wide_window/test/yangambi_drc/s01_t01",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": true,
+      "change_pattern": true,
+      "trajectory_confidence": true,
+      "severity": true,
+      "clearing_type": true,
+      "area_bucket_t1": true,
+      "area_bucket_t0": true,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": true
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window/test/yangambi_drc/s02_t01",
+    "predicted": {
+      "_error": "annotation failed schema validation: 12 validation errors for DeforestationAnnotation\ndeforestation_detected\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nchange_pattern\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ntrajectory_confidence\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nseverity\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nclearing_type\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t1\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t0\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_operation\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_machinery_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nsmoke_or_fire_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrecent_road_construction\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nframe_quality\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+    },
+    "ground_truth": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "field_matches": {
+      "valid_json": false,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": false
+    },
+    "error": "annotation failed schema validation: 12 validation errors for DeforestationAnnotation\ndeforestation_detected\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nchange_pattern\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ntrajectory_confidence\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nseverity\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nclearing_type\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t1\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t0\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_operation\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_machinery_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nsmoke_or_fire_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrecent_road_construction\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nframe_quality\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+  },
+  {
+    "sample_id": "wide_window/test/yangambi_drc/s03_t01",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": true,
+      "change_pattern": true,
+      "trajectory_confidence": true,
+      "severity": true,
+      "clearing_type": true,
+      "area_bucket_t1": true,
+      "area_bucket_t0": true,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": true
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/kindu_drc/s00_t02",
+    "predicted": {
+      "_error": "missing <json> section in response"
+    },
+    "ground_truth": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "field_matches": {
+      "valid_json": false,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": false
+    },
+    "error": "missing <json> section in response"
+  },
+  {
+    "sample_id": "wide_window_v2/test/kindu_drc/s00_t03",
+    "predicted": {
+      "_error": "annotation failed schema validation: 12 validation errors for DeforestationAnnotation\ndeforestation_detected\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nchange_pattern\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ntrajectory_confidence\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nseverity\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nclearing_type\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t1\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t0\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_operation\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_machinery_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nsmoke_or_fire_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrecent_road_construction\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nframe_quality\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "low",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "1_10ha",
+      "area_bucket_t0": "10_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": false,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": false
+    },
+    "error": "annotation failed schema validation: 12 validation errors for DeforestationAnnotation\ndeforestation_detected\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nchange_pattern\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ntrajectory_confidence\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nseverity\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nclearing_type\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t1\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t0\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_operation\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_machinery_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nsmoke_or_fire_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrecent_road_construction\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nframe_quality\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._range_range': 'medium'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+  },
+  {
+    "sample_id": "wide_window_v2/test/kindu_drc/s01_t02",
+    "predicted": {
+      "_error": "missing <json> section in response"
+    },
+    "ground_truth": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "field_matches": {
+      "valid_json": false,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": false
+    },
+    "error": "missing <json> section in response"
+  },
+  {
+    "sample_id": "wide_window_v2/test/kindu_drc/s01_t03",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "low",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "1_10ha",
+      "area_bucket_t0": "10_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": false
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/kindu_drc/s02_t02",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": true,
+      "change_pattern": true,
+      "trajectory_confidence": true,
+      "severity": true,
+      "clearing_type": true,
+      "area_bucket_t1": true,
+      "area_bucket_t0": true,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": true
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/kindu_drc/s02_t03",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "low",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "1_10ha",
+      "area_bucket_t0": "10_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": false
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/kindu_drc/s03_t02",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": true,
+      "change_pattern": true,
+      "trajectory_confidence": true,
+      "severity": true,
+      "clearing_type": true,
+      "area_bucket_t1": true,
+      "area_bucket_t0": true,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": true
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/kindu_drc/s03_t03",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "low",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "1_10ha",
+      "area_bucket_t0": "10_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": false
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/lusambo_drc/s00_t02",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "medium",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "10_100ha",
+      "area_bucket_t0": "gt_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": false
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/lusambo_drc/s00_t03",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "medium",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "10_100ha",
+      "area_bucket_t0": "gt_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": false
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/lusambo_drc/s01_t02",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "medium",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "10_100ha",
+      "area_bucket_t0": "gt_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": false
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/lusambo_drc/s01_t03",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "medium",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "10_100ha",
+      "area_bucket_t0": "gt_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": false
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/lusambo_drc/s02_t02",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "medium",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "10_100ha",
+      "area_bucket_t0": "gt_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": false
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/lusambo_drc/s02_t03",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "medium",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "10_100ha",
+      "area_bucket_t0": "gt_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": false
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/lusambo_drc/s03_t02",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "medium",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "10_100ha",
+      "area_bucket_t0": "gt_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": false
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/lusambo_drc/s03_t03",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "medium",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "10_100ha",
+      "area_bucket_t0": "gt_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": false
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/yangambi_drc/s00_t02",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "low",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "gt_100ha",
+      "area_bucket_t0": "gt_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": false
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/yangambi_drc/s00_t03",
+    "predicted": {
+      "_error": "annotation failed schema validation: 12 validation errors for DeforestationAnnotation\ndeforestation_detected\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nchange_pattern\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ntrajectory_confidence\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nseverity\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nclearing_type\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t1\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t0\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_operation\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_machinery_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nsmoke_or_fire_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrecent_road_construction\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nframe_quality\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+    },
+    "ground_truth": {
+      "deforestation_detected": true,
+      "change_pattern": "expansion",
+      "trajectory_confidence": "medium",
+      "severity": "low",
+      "clearing_type": "agriculture",
+      "area_bucket_t1": "gt_100ha",
+      "area_bucket_t0": "gt_100ha",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "good"
+      ]
+    },
+    "field_matches": {
+      "valid_json": false,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": false
+    },
+    "error": "annotation failed schema validation: 12 validation errors for DeforestationAnnotation\ndeforestation_detected\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nchange_pattern\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ntrajectory_confidence\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nseverity\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nclearing_type\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t1\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t0\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_operation\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_machinery_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nsmoke_or_fire_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrecent_road_construction\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nframe_quality\n  Field required [type=missing, input_value={'cloud_artifact': True, ...nge_unit': 'percentage'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+  },
+  {
+    "sample_id": "wide_window_v2/test/yangambi_drc/s01_t02",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": false,
+      "change_pattern": "stable",
+      "trajectory_confidence": "medium",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": true,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": true,
+      "clearing_type": true,
+      "area_bucket_t1": true,
+      "area_bucket_t0": true,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": true
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/yangambi_drc/s01_t03",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": false,
+      "change_pattern": "stable",
+      "trajectory_confidence": "medium",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": true,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": true,
+      "clearing_type": true,
+      "area_bucket_t1": true,
+      "area_bucket_t0": true,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": true
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/yangambi_drc/s02_t02",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": false,
+      "change_pattern": "stable",
+      "trajectory_confidence": "medium",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": true,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": true,
+      "clearing_type": true,
+      "area_bucket_t1": true,
+      "area_bucket_t0": true,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": true
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/yangambi_drc/s02_t03",
+    "predicted": {
+      "_error": "annotation failed schema validation: 12 validation errors for DeforestationAnnotation\ndeforestation_detected\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nchange_pattern\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ntrajectory_confidence\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nseverity\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nclearing_type\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t1\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t0\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_operation\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_machinery_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nsmoke_or_fire_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrecent_road_construction\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nframe_quality\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+    },
+    "ground_truth": {
+      "deforestation_detected": false,
+      "change_pattern": "stable",
+      "trajectory_confidence": "medium",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "field_matches": {
+      "valid_json": false,
+      "deforestation_detected": false,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": false,
+      "clearing_type": false,
+      "area_bucket_t1": false,
+      "area_bucket_t0": false,
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": false
+    },
+    "error": "annotation failed schema validation: 12 validation errors for DeforestationAnnotation\ndeforestation_detected\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nchange_pattern\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ntrajectory_confidence\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nseverity\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nclearing_type\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t1\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\narea_bucket_t0\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_operation\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nactive_machinery_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nsmoke_or_fire_visible\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrecent_road_construction\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nframe_quality\n  Field required [type=missing, input_value={'cloud_artifact': True, ..._impact': 'significant'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+  },
+  {
+    "sample_id": "wide_window_v2/test/yangambi_drc/s03_t02",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": false,
+      "change_pattern": "stable",
+      "trajectory_confidence": "medium",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": true,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": true,
+      "clearing_type": true,
+      "area_bucket_t1": true,
+      "area_bucket_t0": true,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": true
+    },
+    "error": null
+  },
+  {
+    "sample_id": "wide_window_v2/test/yangambi_drc/s03_t03",
+    "predicted": {
+      "deforestation_detected": false,
+      "change_pattern": "cloud_artifact",
+      "trajectory_confidence": "low",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "ground_truth": {
+      "deforestation_detected": false,
+      "change_pattern": "stable",
+      "trajectory_confidence": "medium",
+      "severity": "none",
+      "clearing_type": "none",
+      "area_bucket_t1": "none",
+      "area_bucket_t0": "none",
+      "active_operation": false,
+      "active_machinery_visible": false,
+      "smoke_or_fire_visible": false,
+      "recent_road_construction": false,
+      "frame_quality": [
+        "good",
+        "cloudy"
+      ]
+    },
+    "field_matches": {
+      "valid_json": true,
+      "deforestation_detected": true,
+      "change_pattern": false,
+      "trajectory_confidence": false,
+      "severity": true,
+      "clearing_type": true,
+      "area_bucket_t1": true,
+      "area_bucket_t0": true,
+      "active_operation": true,
+      "active_machinery_visible": true,
+      "smoke_or_fire_visible": true,
+      "recent_road_construction": true,
+      "frame_quality": true
+    },
+    "error": null
+  }
+]
